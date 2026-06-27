@@ -1,0 +1,27 @@
+.page {
+  display: grid;
+  gap: 32px;
+}
+
+.header {
+  padding: var(--card-padding);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  background: var(--white);
+  box-shadow: var(--card-shadow);
+}
+
+.title {
+  margin: 12px 0 0;
+  color: var(--primary);
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.description {
+  max-width: 620px;
+  margin: 16px 0 0;
+  color: var(--secondary);
+  line-height: 1.7;
+}

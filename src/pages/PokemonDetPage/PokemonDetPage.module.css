@@ -1,0 +1,33 @@
+.page {
+  display: grid;
+  gap: 24px;
+}
+
+.backLink {
+  width: fit-content;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.card {
+  padding: var(--card-padding);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  background: var(--white);
+  box-shadow: var(--card-shadow);
+}
+
+.title {
+  margin: 12px 0 0;
+  color: var(--primary);
+  font-size: 36px;
+  line-height: 1;
+  text-transform: capitalize;
+}
+
+.description {
+  max-width: 560px;
+  margin: 16px 0 0;
+  color: var(--secondary);
+  line-height: 1.7;
+}
