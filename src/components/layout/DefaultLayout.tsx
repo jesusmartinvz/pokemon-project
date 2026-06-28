@@ -16,13 +16,13 @@ export function DefaultLayout() {
             end
             className={({ isActive }) => isActive ? `${styles.link} ${styles.linkActive}` : styles.link}
           >
-            Pokemon
+            Principal
           </NavLink>
           <NavLink
             to="/favoritos"
             className={({ isActive }) => isActive ? `${styles.link} ${styles.linkActive}` : styles.link}
           >
-            Favoritos
+            Mis Favoritos
           </NavLink>
         </nav>
       </header>

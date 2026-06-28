@@ -4,6 +4,7 @@
 }
 
 .header {
+  align-items: center;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -66,7 +67,7 @@
 
 @media (max-width: 560px) {
   .header {
-    align-items: flex-start;
+    
     flex-direction: column;
   }
 

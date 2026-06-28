@@ -3,7 +3,7 @@
   gap: 32px;
 }
 
-.hero {
+.header {
   padding: var(--card-padding);
   border: 1px solid var(--border);
   border-radius: var(--card-radius);
@@ -26,4 +26,100 @@
   color: var(--secondary);
   font-size: 16px;
   line-height: 1.7;
+}
+
+.searchPoke {
+  width: 100%;
+  max-width: 520px;
+  margin-top: 22px;
+  display: flex;
+}
+
+.typeFilter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.typeBtn {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--white);
+  color: var(--secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.typeBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.typeBtnActive {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--white);
+}
+
+.typeBtnActive:hover {
+  color: var(--white);
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+}
+
+@media (max-width: 1200px) {
+  .skeletonGrid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .skeletonGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .skeletonGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 420px) {
+  .skeletonGrid { grid-template-columns: 1fr; }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 64px 16px;
+  color: var(--secondary);
+  text-align: center;
+}
+
+.emptyIcon {
+  color: var(--border);
+}
+
+.emptyTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.emptyText {
+  margin: 0;
+  font-size: 15px;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 15px;
 }

@@ -1,0 +1,62 @@
+.page {
+  display: grid;
+  gap: 32px;
+}
+
+.header {
+  padding: var(--card-padding);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  background: var(--white);
+  box-shadow: var(--card-shadow);
+}
+
+.title {
+  margin: 0;
+  color: var(--primary);
+  font-size: 36px;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.description {
+  max-width: 620px;
+  margin: 16px 0 0;
+  color: var(--secondary);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.searchPoke {
+  width: 100%;
+  max-width: 520px;
+  margin-top: 22px;
+  display: flex;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 64px 16px;
+  text-align: center;
+}
+
+.emptyIcon {
+  color: var(--border);
+}
+
+.emptyTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.emptyText {
+  margin: 0;
+  font-size: 15px;
+  color: var(--secondary);
+}
