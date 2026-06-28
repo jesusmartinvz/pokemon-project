@@ -26,15 +26,16 @@ export async function getTypes(): Promise<string[]> {
   const data = await res.json() as TypeListResponse;
   return data.results
     .map(item => item.name)
-    .filter(name => name !== "unknown" && name !== "shadow");
+    .filter(name => name !== "unknown");
 }
 
-export async function getPokemonByType(type: string): Promise<PokemonItem[]> {
+export async function getPokemonByTypePaged(type: string, limit: number, offset: number): Promise<{ total: number; pokemons: PokemonItem[] }> {
   const res = await fetch(`${API_URL}/type/${type}`);
   if (!res.ok) throw new Error("Error al cargar pokémon por tipo");
   const data = await res.json() as TypeDetailResponse;
-  const slice = data.pokemon.slice(0, 20);
-  return Promise.all(slice.map(item => getPokemonByUrl(item.pokemon.url)));
+  const slice = data.pokemon.slice(offset, offset + limit);
+  const pokemons = await Promise.all(slice.map(item => getPokemonByUrl(item.pokemon.url)));
+  return { total: data.pokemon.length, pokemons };
 }
 
 export async function getPokemonDetails(name: string): Promise<PokemonDetails> {

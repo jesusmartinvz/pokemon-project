@@ -35,7 +35,7 @@ export function FavoritesPage() {
   return (
     <section className={styles.page}>
       <div className={styles.header}>
-        <h1 className={styles.title}>Mis pokemones favoritos</h1>
+        <h1 className={styles.title}>Mis <span className={styles.titleAccent}>Pokemones</span> favoritos</h1>
         <p className={styles.description}>
           Aquí encontrará un listado de todos su pokemones marcados como favoritos. 
         </p>

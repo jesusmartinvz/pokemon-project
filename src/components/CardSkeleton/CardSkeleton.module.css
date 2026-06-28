@@ -20,7 +20,7 @@
 .image,
 .name,
 .types {
-  background: #e2e8f0;
+  background: var(--border);
   border-radius: 6px;
 }
 

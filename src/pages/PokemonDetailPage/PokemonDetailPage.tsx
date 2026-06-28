@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, XCircle } from "lucide-react";
 import TypeLabel from "../../components/TypeLabel/TypeLabel";
 import { getPokemonDetails } from "../../api/pokemon-api";
 import type { PokemonDetails } from "../../types/pokemon.types";
@@ -65,8 +65,9 @@ export function PokemonDetailPage() {
     return (
       <section className={styles.page}>
         <div className={styles.error}>
+          <XCircle size={44} className={styles.errorIcon} />
           <p>{errorMessage}</p>
-          <Link to="/">Volver a la lista</Link>
+          <Link to="/" className={styles.errorLink}>Volver a la lista</Link>
         </div>
       </section>
     );
@@ -97,7 +98,7 @@ export function PokemonDetailPage() {
             </div>
 
             <div className={styles.stats}>
-              <h2>Estadísticas base</h2>
+              <h2>Estadísticas</h2>
               {pokemon.stats.map((stat) => (
                 <div key={stat.name} className={styles.statRow}>
                   <span className={styles.statName}>{stat.name}</span>

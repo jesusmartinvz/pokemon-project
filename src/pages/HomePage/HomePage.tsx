@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
-import { SearchX } from "lucide-react";
+import { SearchX, XCircle, RotateCcw } from "lucide-react";
 import PokemonList from "../../components/PokemonList/PokemonList";
 import CardSkeleton from "../../components/CardSkeleton/CardSkeleton";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import Pagination from "../../components/Pagination/Pagination";
+import TypeLabel from "../../components/TypeLabel/TypeLabel";
 import { useFavorites } from "../../hooks/useFavorites";
 import { usePokemonList } from "../../hooks/usePokemonList";
 import { useTypeFilter } from "../../hooks/useTypeFilter";
@@ -15,10 +16,11 @@ export default function HomePage() {
   const [searchText, setSearchText] = useState("");
 
   const { pokemons, page, total, isLoading, errorMessage, goToPage, reloadList } = usePokemonList();
-  const { types, selectedType, pokemons: typePokemons, isLoading: typeLoading, errorMessage: typeError, selectType } = useTypeFilter();
+  const { types, selectedType, pokemons: typePokemons, total: typeTotal, page: typePage, isLoading: typeLoading, errorMessage: typeError, selectType, goToTypePage } = useTypeFilter();
   const { isFavorite, toggleFavorite } = useFavorites();
 
   const totalPages = Math.ceil(total / PAGE_SIZE);
+  const typeTotalPages = Math.ceil(typeTotal / PAGE_SIZE);
   const activePokemons = selectedType ? typePokemons : pokemons;
   const activeLoading = selectedType ? typeLoading : isLoading;
   const activeError = selectedType ? typeError : errorMessage;
@@ -32,7 +34,7 @@ export default function HomePage() {
   return (
     <section className={styles.page}>
       <div className={styles.header}>
-        <h1 className={styles.title}>Busca tu pokemón</h1>
+        <h1 className={styles.title}>Busca tu <span className={styles.titleAccent}>Pokemón</span></h1>
         <p className={styles.description}>
           Busca tu pokemon por nombre o por tipo, visualiza sus detalles y guarda a tus favoritos.
         </p>
@@ -49,7 +51,7 @@ export default function HomePage() {
                 className={type === selectedType ? `${styles.typeBtn} ${styles.typeBtnActive}` : styles.typeBtn}
                 onClick={() => selectType(type)}
               >
-                {type}
+                <TypeLabel name={type} />
               </button>
             ))}
           </div>
@@ -64,8 +66,14 @@ export default function HomePage() {
 
       {!activeLoading && activeError && (
         <div className={styles.error}>
+          <XCircle size={44} className={styles.errorIcon} />
           <p>{activeError}</p>
-          {!selectedType && <button type="button" onClick={reloadList}>Intentar de nuevo</button>}
+          {!selectedType && (
+            <button className={styles.errorBtn} type="button" onClick={reloadList}>
+              <RotateCcw size={14} />
+              Intentar de nuevo
+            </button>
+          )}
         </div>
       )}
 
@@ -81,9 +89,10 @@ export default function HomePage() {
           : <PokemonList pokemons={visiblePokemons} isFavorite={isFavorite} onFavoriteClick={toggleFavorite} />
       )}
 
-      {!selectedType && totalPages > 1 && (
-        <Pagination page={page} totalPages={totalPages} onPage={goToPage} />
-      )}
+      {selectedType
+        ? typeTotalPages > 1 && <Pagination page={typePage} totalPages={typeTotalPages} onPage={goToTypePage} />
+        : totalPages > 1 && <Pagination page={page} totalPages={totalPages} onPage={goToPage} />
+      }
     </section>
   );
 }

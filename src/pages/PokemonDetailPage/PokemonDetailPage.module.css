@@ -33,7 +33,7 @@
 .skImage,
 .skLine,
 .skRow {
-  background: #e2e8f0;
+  background: var(--border);
   border-radius: 8px;
   animation: pulse 1.4s ease infinite;
 }
@@ -52,7 +52,7 @@
 
 .skRow {
   height: 12px;
-  border-radius: 999px;
+  border-radius: 100px;
 }
 
 .card {
@@ -134,7 +134,7 @@
 
 .statBar {
   height: 9px;
-  border-radius: 999px;
+  border-radius: 100px;
   background: var(--border);
   overflow: hidden;
 }
@@ -161,20 +161,35 @@
 }
 
 .error {
-  display: grid;
-  gap: 14px;
-  padding: 24px;
-  border: 1px solid #fecaca;
-  border-radius: 18px;
-  background: #fff1f2;
-  color: #991b1b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 64px 16px;
+  text-align: center;
+  color: var(--primary);
+  font-size: 15px;
+  font-weight: 600;
 }
 
-.error p { margin: 0; }
+.errorIcon {
+  color: var(--secondary);
+}
 
-.error a {
-  color: var(--accent);
+.errorLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 22px;
+  border-radius: 10px;
+  background: #ef4444;
+  color: var(--white);
+  font-size: 14px;
   font-weight: 600;
+}
+
+.errorLink:hover {
+  background: #dc2626;
 }
 
 @media (max-width: 850px) {
